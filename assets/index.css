@@ -47,3 +47,6 @@ body{
     float: left;
 }
 
+input[type="number"]{
+    width: 120px;
+}

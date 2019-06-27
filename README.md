@@ -1,11 +1,11 @@
 # Method of Relaxation
 
-## Description
+## Description:
 This repository contains code for creating a dashboard application
 that displays a plot that is associated with a solution to laplaces equation
 using the **Method of Relaxation**. 
 
-### Files
+### Files:
 1. `Dash-Application.py`: contains the code for the dash 
    application that is used for generating a web page with a 
    dashboard that allows for users to input parameters 
@@ -18,8 +18,8 @@ using the **Method of Relaxation**.
    dash application. 
    
    
-### Dash Application
-![](dash-application.png)
+### Dash Application:
+![](dash-app.png)
  
  The dash application allows for the user to specify parameters
  associated with a probelm statement, such as the potentials around
