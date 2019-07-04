@@ -94,12 +94,41 @@ class Grid(object):
         ax.set_zlabel('Z axis (Potential)')
         plt.show()
 
-@jit
+
 def relax(matrix, iterations):
+
+    # original matrix
+    matrix_orig = matrix.copy()
+
+    # x coordinates for the error values
+    x_error_values = np.floor(np.linspace(1, iterations, 10))
+
+    # list of the number of more iterations that need to be performed
+    # to get to the next x-coordinate
+    iteration_segs = [x_error_values[0]] + [x_error_values[i] - x_error_values[i-1]
+                                            for i in range(1, len(x_error_values))]
+
+    # y coordinates for the error values (sum squared error)
+    y_error_values = []
+
+    # run relaxation algorithm
+    for iters in iteration_segs:
+        relax_execute(matrix, iterations)
+
+        # sum square error
+        y_error_values.append(np.sum((matrix - matrix_orig)**2))
+
+    return x_error_values, y_error_values
+
+
+@jit
+def relax_execute(matrix, iterations):
+
     rows, cols = [i-1 for i in matrix.shape]
-    for count in range(iterations):
-        for i in range(1,rows):
-            for j in range(1,cols):
+
+    for count in range(1, iterations + 1):
+        for i in range(1, rows):
+            for j in range(1, cols):
                 matrix[i][j] = (matrix[i-1][j] + matrix[i][j-1]  + \
                                 matrix[i+1][j] + matrix[i][j+1]) / 4
 

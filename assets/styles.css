@@ -1,0 +1,39 @@
+
+body{
+    background-color: beige;
+}
+
+#banner{
+    background-color: #9add87;
+    text-align: center;
+}
+
+.input-field{
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.x-field{
+    margin: 0px;
+    padding: 10px;
+}
+
+.y-field{
+    margin: 0px;
+    padding: 10px;
+}
+
+.clr{
+    clear: both;
+}
+
+.rotated{
+    writing-mode: vertical-lr;
+}
+
+.slider{
+    margin-bottom: 55px;
+}
+
+.surface{
+}
