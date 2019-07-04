@@ -3,7 +3,7 @@
 ## Description:
 This repository contains code for creating a dashboard application
 that displays a surface plot that is associated with a solution to laplace's equation
-that was computed using the [Method of Relaxation](https://en.wikipedia.org/wiki/Relaxation_(iterative_method). 
+that was computed using the [Method of Relaxation](https://en.wikipedia.org/wiki/Relaxation_(iterative_method)). 
 
 ### Dependencies
 
