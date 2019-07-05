@@ -37,7 +37,7 @@ python3 Dash-Application.py
    
    
 ### Dash Application:
-![](dash-app.png)
+![](application.png)
  
  The dash application allows for the user to specify parameters
  associated with a particular probelm statement. 
