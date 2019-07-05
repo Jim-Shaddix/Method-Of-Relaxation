@@ -107,21 +107,69 @@ app.layout = html.Div([
             id="button-usage",
             className="mb-3",
             color="info",
+            style={"marginRight": "10px"}
+        ),
+
+        dbc.Button(
+            "Author",
+            id="button-author",
+            className="mb-3",
+            color="info",
         ),
 
         # collapse: description
         dbc.Collapse(
-            dbc.Card(dbc.CardBody("This is a simple tool that uses the method of relaxation to solve " +
-                                  "for the potential of a rectangular system given a set of boundary " +
-                                  "conditions.")),
-            id="collapse-description",
+            dbc.Card(dbc.CardBody([
+                html.H4("Description", className="card-title"),
+                html.P("This dashboard uses the method of relaxation to solve " +
+                        "for the potential of a rectangular system given a set of four constant boundary " +
+                        "conditions. This tool is meant to be a visual aid for people who are interested " +
+                        "in understanding how the method of relaxation works."),
+
+            ]), color="info", inverse=True),
+            id="collapse-description"
         ),
 
         # collapse: usage
         dbc.Collapse(
-            dbc.Card(dbc.CardBody("This application can be used to ...")),
+            dbc.Card(dbc.CardBody([
+                html.H4("Usage", className="card-title"),
+                html.H6("Input Fields"),
+                html.Ul([
+                    html.Li("Minimum / Maximum: Set the size of the rectangle for the x/y axis."),
+                    html.Li("Minimum / Maximum (BC): Set the boundary conditions along the minimum / maximum axis values."),
+                    html.Li("Submit Button: Uses all of the input parameters to start a new relaxation calculation.")
+                ]),
+                html.H6("Sum of Square Errors"),
+                html.Ul([
+                    html.Li("Each point on the graph represents the difference between the non-relaxed" +
+                            " grid, and the relaxed grid, squared. Where I am than summed over the resultant grid."),
+                    html.Li("Equation: sum((initial-grid - relaxed-grid)^2)"),
+                    html.Li("This graph is useful, because it serves as an indicator when you" +
+                            " have used enough relaxation iterations to converge on a solution."+
+                            " If the graph begins to flatten out, than you have converged on a solution.")
+                ])
+            ]), color="info", inverse=True),
             id="collapse-usage",
         ),
+
+        # collapse: Author
+        dbc.Collapse(
+            dbc.Card([
+                html.Div(
+                    dbc.CardImg(src="/assets/images/jim.png", top=True,
+                                style={"maxWidth": "100%", "height": "auto"}),
+                    style={"width": "150px", "height": "250px"}
+                ),
+                dbc.CardBody([
+                    html.H4("Author: James Shaddix", className="card-title"),
+                    html.P("I am an aspiring data scientist who just graduated from Colorado State University" +
+                           " with B.S. degrees in Applied Physics and Computer Science.")
+                    ]
+                )
+            ], color="info", inverse=True),
+
+        id="collapse-author"),
 
     ], id="header-cell", className="left-element"),
 
@@ -238,7 +286,6 @@ def update_graph(n_clicks, style, min_x, min_y, min_bc_x, min_bc_y, max_x, max_y
     y_axis = po.Axis(minimum=min_y, maximum=max_y, bc_min=min_bc_y, bc_max=max_bc_y, size=100, num_cells=True)
     grid = po.Grid(x_axis, y_axis)
     iters = transform_slider_value(iterations)
-    print("iters:", iters)
     x_error_values, y_error_values = po.relax(grid.Z_cor, iters)
     return {
         'data': [
@@ -275,10 +322,11 @@ def update_graph(n_clicks, style, min_x, min_y, min_bc_x, min_bc_y, max_x, max_y
     }, "{:.2f}".format(time.time() - start_time), None
 
 
-# relaxation slider
+# iteration-slider updates iteration-field
 @app.callback(
     Output('iteration-field', 'value'),
-    [Input('iteration-slider', 'value')])
+    [Input('iteration-slider', 'value')]
+)
 def update_output(value):
     return transform_slider_value(value)
 
@@ -303,6 +351,18 @@ def toggle_collapse(n, is_open):
     if n:
         return not is_open
     return is_open
+
+# toggle author
+@app.callback(
+    Output("collapse-author", "is_open"),
+    [Input("button-author", "n_clicks")],
+    [State("collapse-author", "is_open")],
+)
+def toggle_collapse(n, is_open):
+    if n:
+        return not is_open
+    return is_open
+
 
 if __name__ == '__main__':
     app.run_server(debug=True)
