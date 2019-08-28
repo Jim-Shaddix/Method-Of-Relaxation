@@ -1,9 +1,25 @@
-# Method of Relaxation
+# Method of Relaxation Dashboard 
+
+## Dash Application:
+![](application.png)
+ 
 
 ## Description:
 This repository contains code for creating a dashboard application
 that displays a surface plot that is associated with a solution to laplace's equation
 that was computed using the [Method of Relaxation](https://en.wikipedia.org/wiki/Relaxation_(iterative_method)). 
+
+This dashboard application was built using Python's dash library. 
+It allows for the user to specify parameters
+associated with a particular problem statement. 
+
+The user can set: 
+1. Dimensions of the rectangular system.
+2. Boundary Conditions around the recangular system. (Currently the user can only specify constant boundary conditions.)
+3. The number of relaxation iterations to use.
+ 
+ The program than uses the input parameters to approximate the solution to laplaces equation using the
+ **method of relaxation**.
 
 ### Dependencies
 
@@ -36,16 +52,3 @@ python3 Dash-Application.py
    dash application. 
    
    
-### Dash Application:
-![](application.png)
- 
- The dash application allows for the user to specify parameters
- associated with a particular probelm statement. 
- 
- The user can set: 
- 1. Dimensions of the rectangular system.
- 2. Boundary Conditions around the recangular system. (Currently the user can only specify constant boundary conditions.)
- 3. The number of relaxation iterations to use.
- 
- The program than uses the input parameters to approximate the solution to laplaces equation using the
- **method of relaxation**.

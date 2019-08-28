@@ -142,12 +142,12 @@ app.layout = html.Div([
                 ]),
                 html.H6("Sum of Square Errors"),
                 html.Ul([
-                    html.Li("Each point on the graph represents the difference between the non-relaxed" +
-                            " grid, and the relaxed grid, squared. Where I am than summed over the resultant grid."),
+                    html.Li("Each point on the graph represents the sum of the difference between the non-relaxed" +
+                            " grid, and the relaxed grid, squared."),
                     html.Li("Equation: sum((initial-grid - relaxed-grid)^2)"),
-                    html.Li("This graph is useful, because it serves as an indicator when you" +
+                    html.Li("This graph serves as an indicator as to when you" +
                             " have used enough relaxation iterations to converge on a solution."+
-                            " If the graph begins to flatten out, than you have converged on a solution.")
+                            " When the error flattens out, you have converged on a solution.")
                 ])
             ]), color="info", inverse=True),
             id="collapse-usage",
