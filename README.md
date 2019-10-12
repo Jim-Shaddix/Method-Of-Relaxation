@@ -3,9 +3,12 @@
 ## Dash Application:
 ![](assets/images/application.png)
 
+* This application is deployed on heroku. You can visit the application 
+[here!](https://method-of-relaxation.herokuapp.com/)
+
 ## Description:
 This repository contains code for creating a dashboard application
-that displays a surface plot that is associated with a solution to laplace's equation
+that displays a surface plot that is associated with a solution to [Laplace's equation](https://en.wikipedia.org/wiki/Laplace%27s_equation)
 that was computed using the [Method of Relaxation](https://en.wikipedia.org/wiki/Relaxation_(iterative_method)). 
 
 This dashboard application was built using Python's dash library. 
@@ -14,39 +17,40 @@ associated with a particular problem statement.
 
 The user can set: 
 1. Dimensions of the rectangular system.
-2. Boundary Conditions around the recangular system. (Currently the user can only specify constant boundary conditions.)
-3. The number of relaxation iterations to use.
+2. Constant Boundary Conditions around the rectangular system. 
+3. The number of relaxation iterations to run the algorithm with.
  
- The program than uses the input parameters to approximate the solution to laplaces equation using the
- **method of relaxation**.
+ The program than uses the input parameters to approximate the solution to Laplace's equation using the
+ **Method of Relaxation**.
 
-### Dependencies
+## Dependencies
+* python3.7
+* Third party python libraries listed in **requirements.txt**
 
-#### Application / Plot Dependencies
+## Installation Instructions
+
+1. Clone the repo
 ```Bash
-pip install dash==1.0.0  # The core dash backend
-pip install dash-daq==0.1.0  # DAQ components (newly open-sourced!)
-pip install dash-bootstrap-components==0.6.3 # dash bootstrap components
-pip install plotly==3.4.2  # plotly graphs
+git clone https://github.com/Jim-Shaddix/Personal-Website.git
 ```
-#### General Dependencies
+2. You can than use the following command to download all the third party libraries
+needed to run this program.
 ```Bash
-pip install numpy==1.15.4
+pip install -r requirements.txt
+```
+3. Run the application!
+```Bash
+python app.py
 ```
 
-#### Running The Program
-```Bash
-python3 Dash-Application.py
-```
-
-### Files:
-1. `Dash-Application.py`: contains the code for the dash 
+### File Descriptions:
+1. **app.py**: contains the code for the dash 
    application that is used for generating the dashboard.
-2. `Potential.py`: contains data-structures, as well as the 
-   algorithm for the method of relaxation that is used in
-   `Dash-Application.py`
-3. `How-It-Works.ipynb`: is a jupyter notebook that describes 
-   how the method of relaxation works. (I am in the process of writing this file.)
-4. `Assets`: Contains the stylesheets that are used in the 
+2. **Potential.py**: contains data-structures, as well as the 
+   algorithm for the Method of Relaxation that is used in the
+   **Dash-Application.py**
+3. **How-It-Works.ipynb**: is a jupyter notebook that describes 
+   how the Method of Relaxation works.
+4. **Assets**: Contains the stylesheets that are used in the 
    dash application. 
    
