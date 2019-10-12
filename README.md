@@ -1,8 +1,7 @@
 # Method of Relaxation Dashboard 
 
 ## Dash Application:
-![](application.png)
- 
+![](assets/images/application.png)
 
 ## Description:
 This repository contains code for creating a dashboard application
@@ -50,5 +49,4 @@ python3 Dash-Application.py
    how the method of relaxation works. (I am in the process of writing this file.)
 4. `Assets`: Contains the stylesheets that are used in the 
    dash application. 
-   
    
