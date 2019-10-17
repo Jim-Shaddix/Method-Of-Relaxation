@@ -47,7 +47,7 @@ python app.py
 1. **app.py**: contains the code for the dash 
    application that is used for generating the dashboard.
 2. **Potential.py**: contains data-structures, as well as the 
-   algorithm for the Method of Relaxation that is used in the
+   algorithm for the Method of Relaxation that is used in the.
    **Dash-Application.py**
 3. **How-It-Works.ipynb**: is a jupyter notebook that describes 
    how the Method of Relaxation works.
